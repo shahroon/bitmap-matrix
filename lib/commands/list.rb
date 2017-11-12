@@ -6,6 +6,9 @@ require './lib/commands/clear'
 require './lib/commands/show'
 require './lib/invalid_coordinates'
 
+# All above mentioned files could be managed in one single file, 
+# however that would complicate to understand the code.
+# This Class will initiate the process of building image as per commands in show.txt
 module Commands
   class List < InvalidCoordinates
     attr_reader   :app
