@@ -1,26 +1,20 @@
-class InvalidCoordinates < StandardError
-  def initialize(msg='Please check coordinates')
-    super(msg)
-  end
-
+class InvalidCoordinates
+  
   def filter_args(*args)
-  	vals = args.flatten.select {|val| numeric?(val)}
-    puts vals
+  	vals = args.flatten.reject {|val| letter?(val)}
     check_coords(vals)
   end 
 
   def check_coords(vals)
-    #puts vals
-    #vals.select {|invalid| invalid?(val) }
-    #) then (val.to_i > 250 || val.to_i < 1) end
+    vals.select {|val| within_range?(val) }
   end  
 
-  def numeric?(lookAhead)
-    lookAhead =~ /[[:digit:]]/
-  end 	
+  def letter?(lookAhead)
+    lookAhead =~ /[[:alpha:]]/
+  end 
 
-  def invalid?(val)
-    val == true
+  def within_range?(val)
+    val.to_i > 250 || val.to_i < 1
   end  
 end
 

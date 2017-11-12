@@ -29,11 +29,18 @@ module Commands
     def create(args)
       k = args.shift.to_sym
       command = commands.has_key?(k)
-      puts command
       puts 'Command Not Found' unless command
-      err = InvalidCoordinates.new.check_coords(args)
-      Commands.const_get(cmds.fetch(k)).new(app, *args).create unless err
+      if invalid?(args)
+        puts 'Please provide coordinates within 1-250 range.'
+      else
+        Commands.const_get(cmds.fetch(k)).new(app, *args).create
+      end  
     end
     alias_method :cmds, :commands
+
+    def invalid?(args)
+      invalid = InvalidCoordinates.new.filter_args(args)
+      invalid.size > 0
+    end  
   end
 end
