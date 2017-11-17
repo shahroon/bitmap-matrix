@@ -1,5 +1,4 @@
 class InvalidCoordinates
-  
   def filter_args(*args)
   	vals = args.flatten.reject {|val| letter?(val)}
     check_coords(vals)

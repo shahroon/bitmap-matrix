@@ -4,6 +4,8 @@ module Commands
 
     def initialize(app)
       @app = app
+      @rows = app.image.row_size
+      @cols = app.image.column_size
     end
 
     def create; reset  end
@@ -11,8 +13,10 @@ module Commands
     private
 
     def reset
-      #hash.each { |k, v| hash[k] = Array.new(v.count) {'O'} }
-      app.image = []
-    end
+      app.image.each_with_index do |e,row,col|
+        app.image.send(:[]=, row, col, 0)
+      end  
+      Commands::Show.new(app).create
+    end 
   end
 end

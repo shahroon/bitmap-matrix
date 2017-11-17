@@ -1,4 +1,5 @@
 module Commands
+  # This Class setup the color on provided x-axis and y-axis values.
   class SetPixel
     attr_reader :app, :column, :row, :colour
     def initialize(app, column, row, colour)

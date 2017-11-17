@@ -1,4 +1,5 @@
 module Commands
+  # This will add values (colors) verticaly y-axis
   class DrawVertical
 
     attr_reader :app, :column, :row_one, :row_two, :colour

@@ -1,4 +1,5 @@
 require 'matrix'
+# This Class setup the basic structure of Matrix (Image).
 module Commands
   class Set
     attr_reader :app, :columns, :rows
