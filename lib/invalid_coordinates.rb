@@ -1,5 +1,4 @@
 class InvalidCoordinates
-  # This Class validates invalid values of coordinates, there is still a lot improvements.
   def filter_args(*args)
   	vals = args.flatten.reject {|val| letter?(val)}
     check_coords(vals)
